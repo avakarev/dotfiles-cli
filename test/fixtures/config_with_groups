@@ -1,0 +1,11 @@
+{
+  "zsh": [
+    "zsh",
+    "zshrc"
+  ],
+  "git": [
+    "gitconfig",
+    "gitignore-global",
+    "gitattributes-global"
+  ]
+}
