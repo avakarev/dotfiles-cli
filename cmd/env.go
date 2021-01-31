@@ -12,7 +12,7 @@ var envCmd = &cobra.Command{
 	Use:   "env",
 	Short: "Prints dotfiles env",
 	Run: func(cmd *cobra.Command, args []string) {
-		p := printer.Default()
+		p := printer.Default(nil)
 		p.Addln("HomeDir", config.HomeDir)
 		p.Addln("WorkingDir", config.WorkingDir)
 		p.Addln("ConfigDir", config.ConfigDir)
