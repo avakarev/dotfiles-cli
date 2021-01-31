@@ -1,0 +1,6 @@
+{
+  "G104": {
+    "viper": ["BindPFlag"],
+    "github.com/avakarev/dotfiles-cli/internal/printer.Printer": ["Addln", "Flush"]
+  }
+}

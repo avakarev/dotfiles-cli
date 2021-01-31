@@ -21,7 +21,7 @@ lint:
 
 sec:
 	@echo ">> Auditing..."
-	@gosec -quiet ./...
+	@gosec -conf .gosec.json -quiet ./...
 
 test:
 	@echo ">> Running tests..."
