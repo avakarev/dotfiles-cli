@@ -1,5 +1,5 @@
 PKGS = $(shell go list ./... 2> /dev/null)
-TEST_PKGS = $(shell go list ./internal/... ./pkg/... 2> /dev/null)
+TEST_PKGS = $(shell go list ./internal/... 2> /dev/null)
 
 print-%: ; @echo $*=$($*)
 
@@ -21,7 +21,7 @@ lint:
 
 sec:
 	@echo ">> Auditing..."
-	@gosec -quiet ./...
+	@gosec -conf .gosec.json -quiet ./...
 
 test:
 	@echo ">> Running tests..."
