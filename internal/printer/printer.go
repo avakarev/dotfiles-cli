@@ -18,6 +18,11 @@ func (p *Printer) Addln(a ...interface{}) (int, error) {
 	return fmt.Fprintf(p.w, p.f, a...)
 }
 
+// Addf formats according to a format specifier and adds
+func (p *Printer) Addf(f string, a ...interface{}) (int, error) {
+	return fmt.Fprintf(p.w, f, a...)
+}
+
 // Flush writes buffered data to output
 func (p *Printer) Flush() error {
 	return p.w.Flush()

@@ -15,10 +15,12 @@ func TestDefault(t *testing.T) {
 
 	p.Addln("hello", "world")
 	p.Addln("foo", "bar")
+	p.Addf("%d\n", 42)
 	p.Flush()
 
 	testutil.Diff(strings.Join([]string{
 		"hello  world  \n",
 		"foo    bar    \n",
+		"42\n",
 	}, ""), buf.String(), t)
 }
