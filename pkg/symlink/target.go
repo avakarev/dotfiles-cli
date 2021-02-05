@@ -53,3 +53,10 @@ func NewTarget(path string) *Target {
 		Path: path,
 	}
 }
+
+// IsTargetErr checks whether error is target error
+func IsTargetErr(err error) bool {
+	return errors.Is(err, ErrTargetNotExist) ||
+		errors.Is(err, ErrTargetNotLink) ||
+		errors.Is(err, ErrTargetMismatch)
+}

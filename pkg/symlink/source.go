@@ -37,3 +37,8 @@ func NewSource(path string) *Source {
 		Path: path,
 	}
 }
+
+// IsSourceErr checks whether error is target error
+func IsSourceErr(err error) bool {
+	return errors.Is(err, ErrSourceNotExist)
+}
