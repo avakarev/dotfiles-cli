@@ -10,6 +10,9 @@ var (
 	// ErrTargetNotExist represents an error when symlink's target doesn't exist
 	ErrTargetNotExist = errors.New("target does not exist")
 
+	// ErrTargetExist represents an error when symlink's target already exists
+	ErrTargetExist = errors.New("target already exist")
+
 	// ErrTargetNotLink represents an error when symlink's target is supposed to be a link but it's not
 	ErrTargetNotLink = errors.New("target is not a link")
 
@@ -57,6 +60,7 @@ func NewTarget(path string) *Target {
 // IsTargetErr checks whether error is target error
 func IsTargetErr(err error) bool {
 	return errors.Is(err, ErrTargetNotExist) ||
+		errors.Is(err, ErrTargetExist) ||
 		errors.Is(err, ErrTargetNotLink) ||
 		errors.Is(err, ErrTargetMismatch)
 }
