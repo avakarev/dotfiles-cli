@@ -1,6 +1,7 @@
 package symlink
 
 import (
+	"errors"
 	"os"
 )
 
@@ -43,10 +44,19 @@ func (l *Symlink) Validate() error {
 // Link creates symlink
 func (l *Symlink) Link() error {
 	if err := l.Validate(); err != nil {
+		if !errors.Is(err, ErrTargetNotExist) {
+			return err
+		}
+	}
+
+	if err := os.Symlink(l.Source.Path, l.Target.Path); err != nil {
+		if errors.Is(err, os.ErrExist) {
+			return ErrTargetExist
+		}
 		return err
 	}
 
-	return os.Symlink(l.Source.Path, l.Target.Path)
+	return nil
 }
 
 // Unlink deletes symlink (only target, source file/dir stays)
@@ -54,7 +64,13 @@ func (l *Symlink) Unlink() error {
 	if err := l.Validate(); err != nil {
 		return err
 	}
-	return os.Remove(l.Target.Path)
+	if err := os.Remove(l.Target.Path); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return ErrTargetNotExist
+		}
+		return err
+	}
+	return nil
 }
 
 // New returns new Symlink value
