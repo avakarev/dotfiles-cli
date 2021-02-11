@@ -27,8 +27,8 @@ var statusCmd = &cobra.Command{
 			if statusCmdGroups {
 				fmt.Println("[" + g.Name + "]")
 			}
-			for _, sl := range g.Symlinks {
-				op.Println(op.Read(&sl))
+			for i := range g.Symlinks {
+				op.Println(op.Read(&g.Symlinks[i]))
 			}
 		}
 	},
