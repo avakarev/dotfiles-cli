@@ -3,6 +3,7 @@ module github.com/avakarev/dotfiles-cli
 go 1.15
 
 require (
+	github.com/fatih/color v1.7.0
 	github.com/google/go-cmp v0.3.0
 	github.com/nbutton23/zxcvbn-go v0.0.0-20201221231540-e56b841a3c88 // indirect
 	github.com/securego/gosec v0.0.0-20200401082031-e946c8c39989 // indirect
