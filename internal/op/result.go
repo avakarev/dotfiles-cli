@@ -3,10 +3,10 @@ package op
 import (
 	"errors"
 
+	"github.com/avakarev/go-symlink"
 	"github.com/fatih/color"
 
 	"github.com/avakarev/dotfiles-cli/internal/pathutil"
-	"github.com/avakarev/dotfiles-cli/pkg/symlink"
 )
 
 // Result represent symlink's operation result
