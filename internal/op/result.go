@@ -42,7 +42,7 @@ func (res *result) Status() string {
 
 // TargetPath returns symlink's target path
 func (res *result) TargetPath() string {
-	return pathutil.Prettify(res.symlink.Target.Path)
+	return pathutil.Prettify(res.symlink.Target.Path())
 }
 
 // TargetState returns symlink's target state
@@ -61,12 +61,12 @@ func (res *result) TargetState() string {
 
 // SourcePath returns symlink's source path
 func (res *result) SourcePath() string {
-	return pathutil.Prettify(res.symlink.Source.Path)
+	return pathutil.Prettify(res.symlink.Source.Path())
 }
 
 // SourceState returns symlink's source state
 func (res *result) SourceState() string {
-	if res.symlink.Source.Exists {
+	if res.symlink.Source.Exists() {
 		return color.New(color.FgGreen).Sprint("ok")
 	}
 
