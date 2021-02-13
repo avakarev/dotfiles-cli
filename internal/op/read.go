@@ -3,9 +3,8 @@ package op
 import (
 	"errors"
 
+	"github.com/avakarev/go-symlink"
 	"github.com/fatih/color"
-
-	"github.com/avakarev/dotfiles-cli/pkg/symlink"
 )
 
 // ReadResult represent symlink's read operation result

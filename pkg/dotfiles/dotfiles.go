@@ -3,9 +3,10 @@ package dotfiles
 import (
 	"sort"
 
+	"github.com/avakarev/go-symlink"
+
 	"github.com/avakarev/dotfiles-cli/internal/config"
 	"github.com/avakarev/dotfiles-cli/internal/pathutil"
-	"github.com/avakarev/dotfiles-cli/pkg/symlink"
 )
 
 // Dotfiles represents parsed and loaded dotfiles config

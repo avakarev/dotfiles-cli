@@ -1,7 +1,7 @@
 package op
 
 import (
-	"github.com/avakarev/dotfiles-cli/pkg/symlink"
+	"github.com/avakarev/go-symlink"
 )
 
 // LinkResult represent symlink's link operation result
