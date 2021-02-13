@@ -8,7 +8,7 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	source := testutil.FixturePath("dotfiles/rc")
+	source := testutil.FixturePath("home/dotfiles/rc")
 	target := testutil.FixturePath("home/.rc")
 	sl := symlink.New(source, target)
 
@@ -20,7 +20,7 @@ func TestNew(t *testing.T) {
 }
 
 func TestReadOnSucess(t *testing.T) {
-	source := testutil.FixturePath("dotfiles/rc")
+	source := testutil.FixturePath("home/dotfiles/rc")
 	target := testutil.FixturePath("home/.rc")
 	sl := symlink.New(source, target)
 
@@ -35,7 +35,7 @@ func TestReadOnSucess(t *testing.T) {
 }
 
 func TestReadWhenSourceNotExist(t *testing.T) {
-	source := testutil.FixturePath("dotfiles/not.exist")
+	source := testutil.FixturePath("home/dotfiles/not.exist")
 	target := testutil.FixturePath("home/.rc")
 	sl := symlink.New(source, target)
 
@@ -51,7 +51,7 @@ func TestReadWhenSourceNotExist(t *testing.T) {
 }
 
 func TestReadWhenTargetNotExist(t *testing.T) {
-	source := testutil.FixturePath("dotfiles/rc")
+	source := testutil.FixturePath("home/dotfiles/rc")
 	target := testutil.FixturePath("home/.not.exist")
 	sl := symlink.New(source, target)
 
@@ -67,7 +67,7 @@ func TestReadWhenTargetNotExist(t *testing.T) {
 }
 
 func TestReadWhenTargetNotLink(t *testing.T) {
-	source := testutil.FixturePath("dotfiles/rc")
+	source := testutil.FixturePath("home/dotfiles/rc")
 	target := testutil.FixturePath("home/.rc.file")
 	sl := symlink.New(source, target)
 
@@ -83,7 +83,7 @@ func TestReadWhenTargetNotLink(t *testing.T) {
 }
 
 func TestReadWhenTargetSourceMismatch(t *testing.T) {
-	source := testutil.FixturePath("dotfiles/rc")
+	source := testutil.FixturePath("home/dotfiles/rc")
 	target := testutil.FixturePath("home/.rc2")
 	sl := symlink.New(source, target)
 
