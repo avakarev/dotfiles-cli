@@ -3,21 +3,34 @@ package op
 import (
 	"bytes"
 	"fmt"
+
+	"github.com/fatih/color"
 )
 
 // Sprint formats op.Result as string
 func Sprint(res Result) string {
 	buf := &bytes.Buffer{}
 
-	buf.WriteString("  " + res.Status() + " ")
+	tstate := res.TargetState()
+	sstate := res.SourceState()
+
+	buf.WriteString("  ")
+	if tstate.IsComplete() && sstate.IsComplete() {
+		buf.WriteString(color.New(color.FgGreen).Sprint("✔"))
+	} else if tstate.IsError() || sstate.IsError() {
+		buf.WriteString(color.New(color.FgRed).Sprint("✘"))
+	} else {
+		buf.WriteString(" ")
+	}
+	buf.WriteString(" ")
 
 	buf.WriteString(res.TargetPath() + " ")
-	buf.WriteString("[" + res.TargetState() + "]")
+	buf.WriteString("[" + tstate.String() + "]")
 
 	buf.WriteString("  →  ")
 
 	buf.WriteString(res.SourcePath() + " ")
-	buf.WriteString("[" + res.SourceState() + "]")
+	buf.WriteString("[" + sstate.String() + "]")
 
 	return buf.String()
 }

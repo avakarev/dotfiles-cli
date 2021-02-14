@@ -1,6 +1,8 @@
 package op
 
 import (
+	"errors"
+
 	"github.com/avakarev/go-symlink"
 )
 
@@ -9,15 +11,24 @@ type UnlinkResult struct {
 	result
 }
 
+// TargetState returns symlink's target state
+func (res *UnlinkResult) TargetState() *State {
+	if res.error == nil {
+		return NewCompleteState("unlinked")
+	}
+	if errors.Is(res.error, symlink.ErrTargetNotExist) {
+		return NewIncompleteState("skipped")
+	}
+	if symlink.IsTargetErr(res.error) {
+		return NewErrorState(res.error.Error())
+	}
+	return NewUnknownState("?")
+}
+
 // Unlink runs link op and return result
 func Unlink(s *symlink.Symlink) Result {
 	return &UnlinkResult{result{
-		states: TargetStates{
-			complete:   "unlinked",
-			incomplete: "skipped",
-			unknown:    "?",
-		},
 		symlink: s,
-		err:     s.Unlink(),
+		error:   s.Unlink(),
 	}}
 }
