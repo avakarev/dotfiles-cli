@@ -2,32 +2,22 @@ package op
 
 import (
 	"github.com/avakarev/go-symlink"
-	"github.com/fatih/color"
 
 	"github.com/avakarev/dotfiles-cli/internal/pathutil"
 )
 
 // Result represent symlink's operation result
 type Result interface {
-	Status() string
 	TargetPath() string
-	TargetState() string
+	TargetState() *State
 	SourcePath() string
-	SourceState() string
-}
-
-// TargetStates represents possible target state names after operation
-type TargetStates struct {
-	complete   string
-	incomplete string
-	unknown    string
+	SourceState() *State
 }
 
 // result represent symlink's operation result
 type result struct {
-	states  TargetStates
 	symlink *symlink.Symlink
-	err     error
+	error   error
 }
 
 // TargetPath returns symlink's target path
@@ -46,14 +36,14 @@ func (res *result) SourcePath() string {
 }
 
 // SourceState returns symlink's source state
-func (res *result) SourceState() string {
+func (res *result) SourceState() *State {
 	if res.symlink.Source.Exists() {
-		return color.New(color.FgGreen).Sprint("ok")
+		return NewCompleteState("ok")
 	}
 
-	if symlink.IsSourceErr(res.err) {
-		return color.New(color.FgRed).Sprintf("err: %s", res.err.Error())
+	if symlink.IsSourceErr(res.error) {
+		return NewErrorState(res.error.Error())
 	}
 
-	return "?"
+	return NewUnknownState("?")
 }
