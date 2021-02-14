@@ -25,12 +25,12 @@ func Sprint(res Result) string {
 	buf.WriteString(" ")
 
 	buf.WriteString(res.TargetPath() + " ")
-	buf.WriteString("[" + res.TargetState().String() + "]")
+	buf.WriteString("[" + tstate.String() + "]")
 
 	buf.WriteString("  →  ")
 
 	buf.WriteString(res.SourcePath() + " ")
-	buf.WriteString("[" + res.SourceState().String() + "]")
+	buf.WriteString("[" + sstate.String() + "]")
 
 	return buf.String()
 }
