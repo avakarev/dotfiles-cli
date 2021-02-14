@@ -36,7 +36,7 @@ func TestSprintOnReadResultWithSourceError(t *testing.T) {
 		testutil.FixturePath("home/.rc"),
 	)
 	testutil.Diff(
-		"    ~/.rc [?]  →  ./rc.not.exist [err: source does not exist]",
+		"  ✘ ~/.rc [?]  →  ./rc.not.exist [err: source does not exist]",
 		op.Sprint(op.Read(&sym)),
 		t,
 	)
@@ -48,7 +48,7 @@ func TestSprintOnReadResultWithTargetError(t *testing.T) {
 		testutil.FixturePath("home/.rc.file"),
 	)
 	testutil.Diff(
-		"    ~/.rc.file [err: target is not a link]  →  ./rc [ok]",
+		"  ✘ ~/.rc.file [err: target is not a link]  →  ./rc [ok]",
 		op.Sprint(op.Read(&sym)),
 		t,
 	)

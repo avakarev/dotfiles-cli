@@ -14,10 +14,12 @@ type ReadResult struct {
 
 // Status returns result's status
 func (res *ReadResult) Status() string {
-	if !res.symlink.IsLinked() {
-		return " "
+	if res.symlink.IsLinked() {
+		return color.New(color.FgGreen).Sprint("✔")
+	} else if !errors.Is(res.err, symlink.ErrTargetNotExist) {
+		return color.New(color.FgRed).Sprint("✘")
 	}
-	return color.New(color.FgGreen).Sprint("✔")
+	return " "
 }
 
 // TargetState returns symlink's target state
