@@ -34,19 +34,9 @@ func (st *State) IsComplete() bool {
 	return st.value == stateComplete
 }
 
-// IsIncomplete checks whether state is `stateIncomplete`
-func (st *State) IsIncomplete() bool {
-	return st.value == stateIncomplete
-}
-
 // IsError checks whether state is `stateError`
 func (st *State) IsError() bool {
 	return st.value == stateError
-}
-
-// IsUnknown checks whether state is `stateUnknown`
-func (st *State) IsUnknown() bool {
-	return st.value == stateUnknown
 }
 
 // NewCompleteState returns State of `stateComplete`
