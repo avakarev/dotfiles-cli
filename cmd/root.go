@@ -23,7 +23,7 @@ func main() {
 func Execute() {
 	defer func() {
 		if err := recover(); err != nil {
-			log.Println(err)
+			log.Fatalln(err)
 		}
 	}()
 

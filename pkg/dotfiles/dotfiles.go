@@ -1,7 +1,9 @@
 package dotfiles
 
 import (
+	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/avakarev/go-symlink"
 
@@ -14,8 +16,27 @@ type Dotfiles struct {
 	Groups []Group
 }
 
+func (d *Dotfiles) validate(names []string) error {
+	hash := make(map[string]bool, len(d.Groups))
+	groups := make([]string, len(d.Groups))
+	for i, g := range d.Groups {
+		hash[g.Name] = true
+		groups[i] = g.Name
+	}
+	for _, n := range names {
+		if !hash[n] {
+			return fmt.Errorf("group %q is not one of %s", n, strings.Join(groups, ", "))
+		}
+	}
+	return nil
+}
+
 // Filter returns only groups that match given names
 func (d *Dotfiles) Filter(names []string) []Group {
+	if err := d.validate(names); err != nil {
+		panic(err)
+	}
+
 	if len(names) == 0 {
 		return d.Groups
 	}
@@ -32,10 +53,11 @@ func (d *Dotfiles) Filter(names []string) []Group {
 }
 
 // Sort sorts the groups by name
-func (d *Dotfiles) Sort() {
+func (d *Dotfiles) Sort() *Dotfiles {
 	sort.Slice(d.Groups, func(i, j int) bool {
 		return d.Groups[i].Name < d.Groups[j].Name
 	})
+	return d
 }
 
 // Group represents dotfiles group

@@ -22,8 +22,7 @@ var statusCmd = &cobra.Command{
 			log.Fatalln(err)
 		}
 
-		dfiles.Sort()
-		for _, g := range dfiles.Filter(args) {
+		for _, g := range dfiles.Sort().Filter(args) {
 			if statusCmdGroups {
 				fmt.Println("[" + g.Name + "]")
 			}
