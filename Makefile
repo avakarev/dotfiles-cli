@@ -29,8 +29,9 @@ test:
 .PHONY: test
 
 setup-ci:
-	@go get -u github.com/mgechev/revive
-	@go get -u github.com/securego/gosec/v2/cmd/gosec
+	@GO111MODULE=off go get -u github.com/myitcv/gobin
+	@gobin github.com/mgechev/revive
+	@gobin github.com/securego/gosec/v2/cmd/gosec
 
 ci: lint vet sec test
 
