@@ -7,7 +7,7 @@ builds:
   - id: dotfiles
     env:
       - CGO_ENABLED=0
-    main: ./cmd/root.go
+    main: ./cmd
     binary: dotfiles
     flags:
       - -trimpath
