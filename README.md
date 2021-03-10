@@ -51,16 +51,16 @@ or an object of groups each listing its own list.
 
 Example of configuration file with no groups:
 
-```
-{
+```json
+[
   "vim",
   "vimrc"
-}
+]
 ```
 
 Example of configuration file with groups:
 
-```
+```json
 {
   "zsh": [
     "zsh",
