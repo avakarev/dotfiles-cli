@@ -9,6 +9,9 @@ builds:
       - CGO_ENABLED=0
     main: ./cmd/root.go
     binary: dotfiles
+    flags:
+      - -trimpath
+    ldflags: -s -w -X buildmeta.GitCommit={{.ShortCommit}} -X buildmeta.BuildDate={{.Date}} -X buildmeta.Version={{.Version}}
     goos:
       - linux
       - darwin
@@ -53,9 +56,6 @@ brews:
     homepage: "https://github.com/avakarev/homebrew-tap"
     description: "CLI utility to manage dotfiles symlinks"
     license: "MIT"
-
-signs:
-  - artifacts: checksum
 
 checksum:
   name_template: "checksums.txt"
