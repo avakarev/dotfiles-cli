@@ -1,6 +1,10 @@
 PKGS = $(shell go list ./... 2> /dev/null)
 TEST_PKGS = $(shell go list ./internal/... ./pkg/... 2> /dev/null)
 
+GO_MODULE := $(shell awk '/module/{print $$2; exit}' go.mod)
+GO_BUILDMETA = github.com/avakarev/dotfiles-cli/internal/buildmeta
+
+
 print-%: ; @echo $*=$($*)
 
 tidy:
@@ -39,3 +43,9 @@ build:
 	@echo ">> Building ./bin/dotfiles ..."
 	@CGO_ENABLED=0 go build -o ./bin/dotfiles ./cmd
 	@echo "   Done!"
+
+release:
+	BUILDMETA=${GO_BUILDMETA} goreleaser release --rm-dist
+
+release-dryrun:
+	BUILDMETA=${GO_BUILDMETA} goreleaser build --rm-dist --snapshot
