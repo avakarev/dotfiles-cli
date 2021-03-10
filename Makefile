@@ -48,4 +48,7 @@ release:
 	BUILDMETA=${GO_BUILDMETA} goreleaser release --rm-dist
 
 release-dryrun:
+	BUILDMETA=${GO_BUILDMETA} goreleaser release --snapshot --skip-publish --skip-sign --rm-dist
+
+release-build:
 	BUILDMETA=${GO_BUILDMETA} goreleaser build --rm-dist --snapshot

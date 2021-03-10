@@ -14,5 +14,7 @@ jobs:
       run: make setup-ci ci
     - uses: goreleaser/goreleaser-action@v2
       with:
+        install-only: true
         version: latest
-        args: release --snapshot --skip-publish --skip-sign --rm-dist
+    - name: Dry run release
+      run: make release-dryrun
