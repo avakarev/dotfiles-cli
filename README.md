@@ -2,6 +2,24 @@
 
 CLI utility to manage dotfiles symlinks
 
+## Usage
+
+You can simply start with checking status of symlinks from configuration file:
+
+    dotfiles status
+
+To link dotfiles use `link` command:
+
+    dotfiles link
+
+To delete symlinks use `unlink` command:
+
+    dotfiles unlink
+
+Each command supports optional group(s) filter argument:
+
+    dotfiles status group1 group2
+
 ## Configuration
 
 `dotfiles` needs configuration file describing symlink groups.
