@@ -1,0 +1,68 @@
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod download
+builds:
+  - id: dotfiles
+    env:
+      - CGO_ENABLED=0
+    main: ./cmd/root.go
+    binary: dotfiles
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - 6
+      - 7
+
+archives:
+  - id: default
+    builds:
+      - dotfiles
+    replacements:
+      darwin: Darwin
+      amd64: x86_64
+
+nfpms:
+  - builds:
+      - dotfiles
+    vendor: avakarev
+    homepage: "https://github.com/avakarev/dotfiles-cli"
+    maintainer: "Andrii Vakarev"
+    description: "CLI utility to manage dotfiles symlinks"
+    license: MIT
+    formats:
+      - apk
+      - deb
+      - rpm
+    bindir: /usr/bin
+
+brews:
+  - goarm: 6
+    tap:
+      owner: avakarev
+      name: homebrew-tap
+    commit_author:
+      name: "Andrii Vakarev"
+      email: "avakarev@gmail.com"
+    homepage: "https://github.com/avakarev/homebrew-tap"
+    description: "CLI utility to manage dotfiles symlinks"
+    license: "MIT"
+
+signs:
+  - artifacts: checksum
+
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^test:"
