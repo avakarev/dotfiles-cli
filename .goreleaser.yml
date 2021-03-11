@@ -29,8 +29,8 @@ archives:
     builds:
       - dotfiles
     replacements:
-      darwin: Darwin
-      amd64: x86_64
+      armv6: armv6l
+      armv7: armv7l
 
 nfpms:
   - builds:
@@ -44,6 +44,9 @@ nfpms:
       - apk
       - deb
       - rpm
+    replacements:
+      armv6: armv6l
+      armv7: armv7l
     bindir: /usr/bin
 
 # brews:
