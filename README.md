@@ -1,8 +1,26 @@
 # dotfiles-cli
 
+[![Latest Release](https://img.shields.io/github/release/avakarev/dotfiles-cli.svg)](https://github.com/avakarev/dotfiles-cli/releases)
+[![CI Status](https://github.com/avakarev/dotfiles-cli/actions/workflows/go.yml/badge.svg)](https://github.com/avakarev/dotfiles-cli/actions)
+[![Go ReportCard](http://goreportcard.com/badge/avakarev/dotfiles-cli)](http://goreportcard.com/report/avakarev/dotfiles-cli)
+
 CLI utility to manage dotfiles symlinks
 
 ## Installation
+
+### Packages
+
+#### Linux
+
+[Packages](https://github.com/avakarev/dotfiles/releases) in Alpine, Debian & RPM formats
+
+#### macOS
+
+With [Homebrew](https://brew.sh/): `brew tap avakarev/tap && brew install dotfiles`
+
+### Binaries
+
+[Binaries](https://github.com/avakarev/dotfiles/releases) for Linux and macOS
 
 ### From source
 
@@ -79,3 +97,7 @@ If source path just a filename, it's expected to be located in the same director
 If target part is missing, it's assumed as `"~/.<source>"`.
 
 Both `source` and `target` path can include `~` or `$HOME`, which is interpreted as home directory path.
+
+## License
+
+`dotfiles` is licensed under MIT license. (see [LICENSE](./LICENSE))
