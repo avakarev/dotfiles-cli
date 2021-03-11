@@ -97,3 +97,7 @@ If source path just a filename, it's expected to be located in the same director
 If target part is missing, it's assumed as `"~/.<source>"`.
 
 Both `source` and `target` path can include `~` or `$HOME`, which is interpreted as home directory path.
+
+## License
+
+`dotfiles` is licensed under MIT license. (see [LICENSE](./LICENSE))
