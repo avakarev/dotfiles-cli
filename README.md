@@ -4,6 +4,20 @@ CLI utility to manage dotfiles symlinks
 
 ## Installation
 
+### Packages
+
+#### Linux
+
+[Packages](https://github.com/avakarev/dotfiles/releases) in Alpine, Debian & RPM formats
+
+#### macOS
+
+With [Homebrew](https://brew.sh/): `brew tap avakarev/tap && brew install dotfiles`
+
+### Binaries
+
+[Binaries](https://github.com/avakarev/dotfiles/releases) for Linux and macOS
+
 ### From source
 
 Make sure you have a working Go environment (Go 1.12 or higher is required).
