@@ -11,7 +11,7 @@ builds:
     binary: dotfiles
     flags:
       - -trimpath
-    ldflags: -s -w -X buildmeta.GitCommit={{.ShortCommit}} -X buildmeta.BuildDate={{.Date}} -X buildmeta.Version={{.Version}}
+    ldflags: "-s -w -X {{.Env.BUILDMETA}}.GitCommit={{.ShortCommit}} -X {{.Env.BUILDMETA}}.BuildDate={{.Date}} -X {{.Env.BUILDMETA}}.Version={{.Version}}"
     goos:
       - linux
       - darwin
