@@ -38,7 +38,6 @@ nfpms:
     description: "CLI utility to manage dotfiles symlinks"
     license: MIT
     formats:
-      - apk
       - deb
       - rpm
     bindir: /usr/bin
