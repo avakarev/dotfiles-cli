@@ -12,7 +12,7 @@ CLI utility to manage dotfiles symlinks
 
 #### Linux
 
-[Packages](https://github.com/avakarev/dotfiles/releases) in Alpine, Debian & RPM formats
+[Packages](https://github.com/avakarev/dotfiles/releases) in `deb` and `rpm` formats
 
 There is a one-liner to install `dotfiles` package using remote script:
 
