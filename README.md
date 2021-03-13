@@ -14,6 +14,15 @@ CLI utility to manage dotfiles symlinks
 
 [Packages](https://github.com/avakarev/dotfiles/releases) in Alpine, Debian & RPM formats
 
+There is a one-liner to install `dotfiles` package using remote script:
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/avakarev/dotfiles-cli/master/scripts/install.sh)"
+
+Running command from above will downloads a script and runs it.
+Script might ask you for sudo password cause package managers like `apt` and `yum` require it to install the package.
+It's a good idea to review everything you run on your machine, so please feel free to review the
+[install script](./scripts/install.sh).
+
 #### macOS
 
 With [Homebrew](https://brew.sh/): `brew tap avakarev/tap && brew install dotfiles`
