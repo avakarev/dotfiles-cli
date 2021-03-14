@@ -18,10 +18,9 @@ There is a one-liner to install `dotfiles` package using remote script:
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/avakarev/dotfiles-cli/master/scripts/install.sh)"
 
-Running command from above will downloads a script and runs it.
+Running command from above downloads a script and runs it.
 Script might ask you for sudo password cause package managers like `apt` and `yum` require it to install the package.
-It's a good idea to review everything you run on your machine, so please feel free to review the
-[install script](./scripts/install.sh).
+It's a good idea to review [the script](./scripts/install.sh) before running it, so please feel free to do it.
 
 #### macOS
 
