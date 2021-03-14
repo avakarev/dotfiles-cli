@@ -18,9 +18,9 @@ var versionCmd = &cobra.Command{
 		w := tabwriter.NewWriter(log.Writer(), 0, 0, 2, ' ', 0)
 		f := "%s\t%s\t\n"
 
-		fmt.Fprintf(w, f, "GitCommit", buildmeta.GitCommit)
-		fmt.Fprintf(w, f, "BuildDate", buildmeta.BuildDate)
 		fmt.Fprintf(w, f, "Version", buildmeta.Version)
+		fmt.Fprintf(w, f, "Date", buildmeta.Date)
+		fmt.Fprintf(w, f, "Commit", buildmeta.Commit)
 		fmt.Fprintf(w, f, "Compiler", buildmeta.Compiler)
 
 		w.Flush()
