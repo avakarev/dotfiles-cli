@@ -9,7 +9,8 @@ import (
 
 func TestLoadWithNoGroups(t *testing.T) {
 	content := testutil.Fixture(t, "config_with_no_groups")
-	config.Load(content)
+	_, err := config.Load(content)
+	testutil.NoErr(err, t)
 
 	testutil.Diff(map[string][]string{
 		"default": {"vim", "vimrc"},
@@ -18,7 +19,8 @@ func TestLoadWithNoGroups(t *testing.T) {
 
 func TestLoadWithGroups(t *testing.T) {
 	content := testutil.Fixture(t, "config_with_groups")
-	config.Load(content)
+	_, err := config.Load(content)
+	testutil.NoErr(err, t)
 
 	testutil.Diff(map[string][]string{
 		"git": {"gitconfig", "gitignore-global", "gitattributes-global"},
