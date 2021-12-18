@@ -19,7 +19,7 @@ func FixturePath(name string, args ...string) string {
 func Fixture(t *testing.T, name string, args ...string) []byte {
 	path := FixturePath(name, args...)
 	bytes, err := ioutil.ReadFile(path) // #nosec
-	if err != err {
+	if err != nil {
 		t.Errorf("Failed to read %q fixture: %s", name, err.Error())
 	}
 	return bytes
