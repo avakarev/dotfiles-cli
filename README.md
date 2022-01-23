@@ -22,6 +22,16 @@ Running command from above downloads a script and runs it.
 Script might ask you for sudo password cause package managers like `apt` and `yum` require it to install the package.
 It's a good idea to review [the script](./scripts/install.sh) before running it, so please feel free to do it.
 
+**NOTE**:
+If you are installing `dotfiles` on older RaspberryPi models and encounter error like:
+
+    dpkg: error processing archive:
+      package architecture (armel) does not match system (armhf)
+
+Then run this command and retry installation script:
+
+    sudo dpkg --add-architecture armel
+
 #### macOS
 
 With [Homebrew](https://brew.sh/): `brew tap avakarev/tap && brew install dotfiles`
