@@ -5,17 +5,23 @@ import (
 	"testing"
 
 	"github.com/avakarev/go-symlink"
+	"github.com/avakarev/go-testutil"
 
+	"github.com/avakarev/dotfiles-cli/internal/config"
 	"github.com/avakarev/dotfiles-cli/internal/op"
-	"github.com/avakarev/dotfiles-cli/internal/testutil"
 )
 
-func setup() {
-	testutil.MockConfig()
-}
+func mockConfig() (reset func()) {
+	origHomeDir := config.HomeDir
+	origWorkingDir := config.WorkingDir
 
-func teardown() {
-	testutil.ResetConfig()
+	config.HomeDir = testutil.FixturePath("home")
+	config.WorkingDir = testutil.FixturePath("home/dotfiles")
+
+	return func() {
+		config.HomeDir = origHomeDir
+		config.WorkingDir = origWorkingDir
+	}
 }
 
 func TestSprintOnReadResultWithNoErrors(t *testing.T) {
@@ -55,8 +61,7 @@ func TestSprintOnReadResultWithTargetError(t *testing.T) {
 }
 
 func TestMain(m *testing.M) {
-	setup()
-	code := m.Run()
-	teardown()
-	os.Exit(code)
+	resetConfig := mockConfig()
+	defer resetConfig()
+	os.Exit(m.Run())
 }

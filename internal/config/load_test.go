@@ -3,14 +3,15 @@ package config_test
 import (
 	"testing"
 
+	"github.com/avakarev/go-testutil"
+
 	"github.com/avakarev/dotfiles-cli/internal/config"
-	"github.com/avakarev/dotfiles-cli/internal/testutil"
 )
 
 func TestLoadWithNoGroups(t *testing.T) {
-	content := testutil.Fixture(t, "config_with_no_groups")
+	content := testutil.FixtureBytes(t, "config_with_no_groups")
 	_, err := config.Load(content)
-	testutil.NoErr(err, t)
+	testutil.MustNoErr(err, t)
 
 	testutil.Diff(map[string][]string{
 		"default": {"vim", "vimrc"},
@@ -18,9 +19,9 @@ func TestLoadWithNoGroups(t *testing.T) {
 }
 
 func TestLoadWithGroups(t *testing.T) {
-	content := testutil.Fixture(t, "config_with_groups")
+	content := testutil.FixtureBytes(t, "config_with_groups")
 	_, err := config.Load(content)
-	testutil.NoErr(err, t)
+	testutil.MustNoErr(err, t)
 
 	testutil.Diff(map[string][]string{
 		"git": {"gitconfig", "gitignore-global", "gitattributes-global"},

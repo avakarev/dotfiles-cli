@@ -5,9 +5,10 @@ import (
 	"path"
 	"testing"
 
+	"github.com/avakarev/go-testutil"
+
 	"github.com/avakarev/dotfiles-cli/internal/config"
 	"github.com/avakarev/dotfiles-cli/internal/pathutil"
-	"github.com/avakarev/dotfiles-cli/internal/testutil"
 )
 
 var (
@@ -57,28 +58,28 @@ func TestAbsWithHomeExpansionSym(t *testing.T) {
 
 func TestExtractOfSingleEntryWithNoLeadingDot(t *testing.T) {
 	source, target, err := pathutil.Extract("myrc")
-	testutil.NoErr(err, t)
+	testutil.MustNoErr(err, t)
 	testutil.Diff("/dotfiles/myrc", source, t)
 	testutil.Diff(path.Join(config.HomeDir, ".myrc"), target, t)
 }
 
 func TestExtractOfSingleEntryWithLeadingDot(t *testing.T) {
 	source, target, err := pathutil.Extract(".myrc")
-	testutil.NoErr(err, t)
+	testutil.MustNoErr(err, t)
 	testutil.Diff("/dotfiles/.myrc", source, t)
 	testutil.Diff(path.Join(config.HomeDir, ".myrc"), target, t)
 }
 
 func TestExtractOfDoubleEntryWithNoLeadingDot(t *testing.T) {
 	source, target, err := pathutil.Extract("myrc:~/.myrc")
-	testutil.NoErr(err, t)
+	testutil.MustNoErr(err, t)
 	testutil.Diff("/dotfiles/myrc", source, t)
 	testutil.Diff(path.Join(config.HomeDir, ".myrc"), target, t)
 }
 
 func TestExtractOfDoubleEntryWithLeadingDot(t *testing.T) {
 	source, target, err := pathutil.Extract(".myrc:$HOME/.myrc")
-	testutil.NoErr(err, t)
+	testutil.MustNoErr(err, t)
 	testutil.Diff("/dotfiles/.myrc", source, t)
 	testutil.Diff(path.Join(config.HomeDir, ".myrc"), target, t)
 }
