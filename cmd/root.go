@@ -1,3 +1,4 @@
+// Command dotfiles is root entry point to all subcommands
 package main
 
 import (

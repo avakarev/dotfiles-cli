@@ -1,3 +1,4 @@
+// Package op implement dotfiles operations and reporting
 package op
 
 import (

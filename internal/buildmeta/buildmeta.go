@@ -1,3 +1,4 @@
+// Package buildmeta holds build and runtime information
 package buildmeta
 
 import "runtime"
