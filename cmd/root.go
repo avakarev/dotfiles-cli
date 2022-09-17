@@ -39,5 +39,7 @@ func init() {
 	cobra.OnInitialize(config.Init)
 
 	rootCmd.PersistentFlags().StringP("config", "c", "", "config file")
-	viper.BindPFlag("config", rootCmd.PersistentFlags().Lookup("config"))
+	if err := viper.BindPFlag("config", rootCmd.PersistentFlags().Lookup("config")); err != nil {
+		log.Fatalln(err)
+	}
 }

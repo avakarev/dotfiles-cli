@@ -27,7 +27,7 @@ var linkCmd = &cobra.Command{
 				fmt.Println("[" + g.Name + "]")
 			}
 			for i := range g.Symlinks {
-				op.Println(op.Link(&g.Symlinks[i]))
+				op.MustPrintln(op.Link(&g.Symlinks[i]))
 			}
 		}
 	},
