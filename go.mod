@@ -1,6 +1,6 @@
 module github.com/avakarev/dotfiles-cli
 
-go 1.17
+go 1.18
 
 require (
 	github.com/avakarev/go-symlink v0.0.0-20220503210934-0bc2f2347f6d
