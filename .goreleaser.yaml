@@ -1,4 +1,5 @@
 # Make sure to check the documentation at https://goreleaser.com
+project_name: dotfiles
 before:
   hooks:
     - go mod download
