@@ -1,3 +1,4 @@
+//Package config implements dotfiles config parser
 package config
 
 import (

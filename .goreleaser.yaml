@@ -1,4 +1,4 @@
-project_name: dotfiles
+# Make sure to check the documentation at https://goreleaser.com
 before:
   hooks:
     - go mod download
@@ -40,24 +40,13 @@ nfpms:
       - rpm
     bindir: /usr/bin
 
-# brews:
-  # - goarm: 6
-    # tap:
-      # owner: avakarev
-      # name: homebrew-tap
-    # commit_author:
-      # name: "Andrii Vakarev"
-      # email: "avakarev@gmail.com"
-    # homepage: "https://github.com/avakarev/homebrew-tap"
-    # description: "CLI utility to manage dotfiles symlinks"
-    # license: "MIT"
-
 checksum:
-  name_template: "checksums.txt"
+  name_template: 'checksums.txt'
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
   sort: asc
   filters:
     exclude:
-      - "^test:"
+      - '^docs:'
+      - '^test:'

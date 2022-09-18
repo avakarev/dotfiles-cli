@@ -23,7 +23,9 @@ var envCmd = &cobra.Command{
 		fmt.Fprintf(w, f, "ConfigDir", config.ConfigDir)
 		fmt.Fprintf(w, f, "ConfigFile", config.ConfigFile)
 
-		w.Flush()
+		if err := w.Flush(); err != nil {
+			log.Fatalln(err)
+		}
 	},
 }
 

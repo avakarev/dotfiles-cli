@@ -23,7 +23,9 @@ var versionCmd = &cobra.Command{
 		fmt.Fprintf(w, f, "Commit", buildmeta.Commit)
 		fmt.Fprintf(w, f, "Compiler", buildmeta.Compiler)
 
-		w.Flush()
+		if err := w.Flush(); err != nil {
+			log.Fatalln(err)
+		}
 	},
 }
 

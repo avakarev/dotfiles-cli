@@ -1,8 +1,10 @@
+// Package op implement dotfiles operations and reporting
 package op
 
 import (
 	"bytes"
 	"fmt"
+	"log"
 
 	"github.com/fatih/color"
 )
@@ -35,8 +37,14 @@ func Sprint(res Result) string {
 	return buf.String()
 }
 
-// Println formats op.Result as string and writes it to standard output
-// with newline appended
+// Println formats op.Result as string and writes it to standard output with newline appended
 func Println(res Result) (n int, err error) {
 	return fmt.Println(Sprint(res))
+}
+
+// MustPrintln is like Println but panics in case of error
+func MustPrintln(res Result) {
+	if _, err := Println(res); err != nil {
+		log.Fatalln(err)
+	}
 }

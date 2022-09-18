@@ -1,3 +1,4 @@
+// Package dotfiles provides access dotfiles groups
 package dotfiles
 
 import (

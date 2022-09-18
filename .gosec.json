@@ -1,7 +1,0 @@
-{
-  "G104": {
-    "text/tabwriter.Writer": ["Flush"],
-    "viper": ["BindPFlag"],
-    "op": ["Println"]
-  }
-}

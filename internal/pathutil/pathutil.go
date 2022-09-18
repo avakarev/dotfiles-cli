@@ -1,3 +1,4 @@
+// Package pathutil implements path helpers
 package pathutil
 
 import (

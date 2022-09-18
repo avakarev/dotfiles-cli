@@ -9,12 +9,14 @@ jobs:
         fetch-depth: 0
     - uses: actions/setup-go@v3
       with:
-        go-version: 1.17
+        go-version: 1.18
     - name: Lint & Test
       run: make setup-ci ci
-    - uses: goreleaser/goreleaser-action@v2
+    - name: Install GoReleaser
+      uses: goreleaser/goreleaser-action@v3
       with:
         install-only: true
-        version: latest
+    - name: Print GoReleaser version
+      run: goreleaser -v
     - name: Dry run release
       run: make release-dryrun
