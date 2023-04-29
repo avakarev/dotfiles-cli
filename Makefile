@@ -33,10 +33,10 @@ build:
 	@echo "   Done!"
 
 release:
-	BUILDMETA=${GO_BUILDMETA} goreleaser release --rm-dist
+	BUILDMETA=${GO_BUILDMETA} goreleaser release --clean
 
 release-dryrun:
-	BUILDMETA=${GO_BUILDMETA} goreleaser release --snapshot --skip-publish --skip-sign --rm-dist
+	BUILDMETA=${GO_BUILDMETA} goreleaser release --snapshot --skip-publish --skip-sign --clean
 
 release-build:
-	BUILDMETA=${GO_BUILDMETA} goreleaser build --snapshot --single-target --rm-dist
+	BUILDMETA=${GO_BUILDMETA} goreleaser build --snapshot --single-target --clean
