@@ -1,8 +1,8 @@
 # dotfiles-cli
 
 [![Latest Release](https://img.shields.io/github/release/avakarev/dotfiles-cli.svg)](https://github.com/avakarev/dotfiles-cli/releases)
-[![CI Status](https://github.com/avakarev/dotfiles-cli/actions/workflows/go.yml/badge.svg)](https://github.com/avakarev/dotfiles-cli/actions)
-[![Go ReportCard](http://goreportcard.com/badge/avakarev/dotfiles-cli)](http://goreportcard.com/report/avakarev/dotfiles-cli)
+[![CI Status](https://github.com/avakarev/dotfiles-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/avakarev/dotfiles-cli/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/avakarev/dotfiles-cli)](https://goreportcard.com/report/github.com/avakarev/dotfiles-cli)
 
 CLI utility to manage dotfiles symlinks
 
