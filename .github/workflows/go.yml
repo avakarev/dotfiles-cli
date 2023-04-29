@@ -12,7 +12,7 @@ jobs:
     - name: Lint & Test
       run: make setup-ci ci
     - name: Install GoReleaser
-      uses: goreleaser/goreleaser-action@v3
+      uses: goreleaser/goreleaser-action@v4
       with:
         install-only: true
     - name: Print GoReleaser version
