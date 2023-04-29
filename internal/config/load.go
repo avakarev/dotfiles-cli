@@ -2,12 +2,12 @@ package config
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 )
 
 // LoadDefault reads and unmarshals config file using precedence order from Init()
 func LoadDefault() (map[string][]string, error) {
-	bytes, err := ioutil.ReadFile(ConfigFile)
+	bytes, err := os.ReadFile(ConfigFile)
 	if err != nil {
 		return nil, err
 	}
