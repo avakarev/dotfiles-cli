@@ -14,8 +14,9 @@ var statusCmdGroups bool
 
 // statusCmd implements the `status` command
 var statusCmd = &cobra.Command{
-	Use:   "status",
-	Short: "Prints dotfiles status",
+	Use:     "status",
+	Aliases: []string{"st"},
+	Short:   "Prints dotfiles status",
 	Run: func(cmd *cobra.Command, args []string) {
 		dfiles, err := dotfiles.New()
 		if err != nil {
